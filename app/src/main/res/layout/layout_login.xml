@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/topbarLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/topbar_act"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ellipsetopbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-100dp"
+        android:src="@drawable/loginlowerbg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topbarLogin" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:src="@drawable/connect_logo_white"
+        app:layout_constraintBottom_toBottomOf="@+id/ellipsetopbar"
+        app:layout_constraintEnd_toEndOf="@+id/topbarLogin"
+        app:layout_constraintStart_toStartOf="@+id/topbarLogin"
+        app:layout_constraintTop_toTopOf="@+id/topbarLogin" />
+
+    <ImageView
+        android:id="@+id/logotext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/logotext"
+        app:layout_constraintEnd_toEndOf="@+id/topbarLogin"
+        app:layout_constraintStart_toStartOf="@+id/topbarLogin"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <ImageView
+        android:id="@+id/loginbg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/bg_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ellipsetopbar" />
+
+    <TextView
+        android:id="@+id/loginfilltxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Masuk"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/loginbg"
+        app:layout_constraintStart_toStartOf="@id/loginbg"
+        app:layout_constraintTop_toTopOf="@id/loginbg" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_input"
+        android:drawableStart="@drawable/name"
+        android:drawablePadding="15dp"
+        android:hint="username"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@id/loginbg"
+        app:layout_constraintStart_toStartOf="@id/loginbg"
+        app:layout_constraintTop_toBottomOf="@id/loginfilltxt" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="password"
+        android:drawableStart="@drawable/key"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_input"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@id/loginbg"
+        app:layout_constraintStart_toStartOf="@id/loginbg"
+        app:layout_constraintTop_toBottomOf="@id/etUsername"/>
+
+    <TextView
+        android:id="@+id/tvtxtDaftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:text="Belum mempunyai akun?"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@id/loginbg"
+        app:layout_constraintStart_toStartOf="@id/loginbg"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"/>
+
+    <TextView
+        android:id="@+id/tvDaftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
+        android:text="Daftar"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@id/tvtxtDaftar"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"/>
+
+    <ImageButton
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginbg"/>
+
+    <TextView
+        android:id="@+id/logintxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masuk"
+        android:textColor="#F1D302"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/login"
+        app:layout_constraintStart_toStartOf="@id/login"
+        app:layout_constraintTop_toTopOf="@id/login"
+        app:layout_constraintBottom_toBottomOf="@id/login"/>
+
+    <ImageButton
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login"/>
+
+    <TextView
+        android:id="@+id/registertxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daftar"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/register"
+        app:layout_constraintStart_toStartOf="@id/register"
+        app:layout_constraintTop_toTopOf="@id/register"
+        app:layout_constraintBottom_toBottomOf="@id/register"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

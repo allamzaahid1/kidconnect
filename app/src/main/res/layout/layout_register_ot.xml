@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/topbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg_topbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/back_yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topbar"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/connect_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/back"
+        app:layout_constraintTop_toBottomOf="@id/topbar" />
+
+    <ImageView
+        android:id="@+id/registerbg"
+        android:layout_width="wrap_content"
+        android:layout_height="550dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/bg_register"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <TextView
+        android:id="@+id/registerfilltxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Daftar"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toTopOf="@id/registerbg" />
+
+    <EditText
+        android:id="@+id/etRegUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_input"
+        android:drawableStart="@drawable/name"
+        android:drawablePadding="15dp"
+        android:hint="Masukkan nama anda"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/registerfilltxt" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="08123456789"
+        android:inputType="phone"
+        android:drawableStart="@drawable/phone"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_input"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/etRegUsername"/>
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_input"
+        android:drawableStart="@drawable/mail"
+        android:drawablePadding="15dp"
+        android:hint="email@example.com"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/etPhone" />
+
+    <EditText
+        android:id="@+id/etRegPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Masukkan Kata Sandi"
+        android:drawableStart="@drawable/key"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_input"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/etEmail"/>
+
+    <EditText
+        android:id="@+id/etConfPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Ulangi Kata Sandi"
+        android:drawableStart="@drawable/key"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_input"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/etRegPassword"/>
+
+    <TextView
+        android:id="@+id/tvtxtDaftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
+        android:text="Daftar Sebagai"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/etConfPassword"
+        app:layout_constraintTop_toBottomOf="@id/etConfPassword"/>
+
+    <ImageButton
+        android:id="@+id/ortu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_transparent"
+        app:layout_constraintEnd_toStartOf="@id/guru"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/tvtxtDaftar" />
+
+    <TextView
+        android:id="@+id/txtortu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Orangtua"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/ortu"
+        app:layout_constraintStart_toStartOf="@id/ortu"
+        app:layout_constraintTop_toTopOf="@id/ortu"
+        app:layout_constraintBottom_toBottomOf="@id/ortu"/>
+
+    <ImageButton
+        android:id="@+id/guru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_no_border"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toEndOf="@id/ortu"
+        app:layout_constraintTop_toBottomOf="@id/tvtxtDaftar" />
+
+    <TextView
+        android:id="@+id/txtguru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guru"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/guru"
+        app:layout_constraintStart_toStartOf="@id/guru"
+        app:layout_constraintTop_toTopOf="@id/guru"
+        app:layout_constraintBottom_toBottomOf="@id/guru"/>
+
+    <EditText
+        android:id="@+id/etNamaAnak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Nama Anak"
+        android:inputType="textPersonName"
+        android:drawableStart="@drawable/anak"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_input"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/ortu"/>
+
+    <TextView
+        android:id="@+id/tvtxtLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:text="Belum mempunyai akun?"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/etNamaAnak"/>
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
+        android:text="Masuk"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@id/tvtxtLogin"
+        app:layout_constraintTop_toBottomOf="@id/etNamaAnak"/>
+
+    <ImageButton
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerbg"/>
+
+    <TextView
+        android:id="@+id/registertxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buat Akun"
+        android:textColor="#F1D302"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/register"
+        app:layout_constraintStart_toStartOf="@id/register"
+        app:layout_constraintTop_toTopOf="@id/register"
+        app:layout_constraintBottom_toBottomOf="@id/register"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

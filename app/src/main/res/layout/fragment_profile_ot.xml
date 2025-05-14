@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ProfileFragment" >
+
+    <!-- Tombol Kembali -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="30dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/back_yellow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/profilebg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/bg_profile"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/profiletxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="PROFIL"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/profilebg"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toTopOf="@id/profilebg" />
+
+    <TextView
+        android:id="@+id/nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:text="Nama"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toBottomOf="@id/profiletxt" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="username"
+        app:layout_constraintEnd_toEndOf="@id/profilebg"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toBottomOf="@id/nama" />
+
+    <TextView
+        android:id="@+id/telepon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:text="Telepon"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toBottomOf="@id/etUsername" />
+
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input"
+        android:inputType="phone"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="08123456789"
+        app:layout_constraintEnd_toEndOf="@id/profilebg"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toBottomOf="@id/telepon" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:text="Email"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toBottomOf="@id/etPhoneNumber" />
+
+    <EditText
+        android:id="@+id/etEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="email@example.com"
+        app:layout_constraintEnd_toEndOf="@id/profilebg"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toBottomOf="@id/email" />
+
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:text="Password"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toBottomOf="@id/etEmailAddress" />
+
+    <EditText
+        android:id="@+id/etPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="password"
+        app:layout_constraintEnd_toEndOf="@id/profilebg"
+        app:layout_constraintStart_toStartOf="@id/profilebg"
+        app:layout_constraintTop_toBottomOf="@id/password" />
+
+    <ImageButton
+        android:id="@+id/batal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/profilebg"
+        app:layout_constraintEnd_toStartOf="@+id/simpan"
+        app:layout_constraintStart_toStartOf="@id/profilebg" />
+
+    <TextView
+        android:id="@+id/txtbatal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Batal"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/batal"
+        app:layout_constraintStart_toStartOf="@id/batal"
+        app:layout_constraintTop_toTopOf="@id/batal"
+        app:layout_constraintBottom_toBottomOf="@id/batal"/>
+
+    <ImageButton
+        android:id="@+id/simpan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/profilebg"
+        app:layout_constraintEnd_toEndOf="@id/profilebg"
+        app:layout_constraintStart_toEndOf="@id/batal"/>
+
+    <TextView
+        android:id="@+id/txtsimpan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/simpan"
+        app:layout_constraintStart_toStartOf="@id/simpan"
+        app:layout_constraintTop_toTopOf="@id/simpan"
+        app:layout_constraintBottom_toBottomOf="@id/simpan"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Ketika item terpilih -->
+    <item android:drawable="@android:color/white" android:state_selected="true" />
+    <!-- Ketika item tidak terpilih -->
+    <item android:drawable="@android:color/transparent" />
+</selector>
