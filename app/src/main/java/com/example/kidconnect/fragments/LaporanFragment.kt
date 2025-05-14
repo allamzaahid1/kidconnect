@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class LaporanFragment : Fragment() {
+
+    private lateinit var btnBack: View
+    private lateinit var btnNotif: View
 
     private lateinit var recyclerViewCalendar: RecyclerView
     private lateinit var layoutAktivitas: LinearLayout
@@ -41,6 +45,22 @@ class LaporanFragment : Fragment() {
         textBulan = view.findViewById(R.id.textBulan)
 
         setupCalendar()
+
+        btnBack = view.findViewById(R.id.btnBack)
+        btnNotif = view.findViewById(R.id.btnNotif)
+
+        btnBack.setOnClickListener {
+            val fragmentTransaction = requireActivity()
+                .supportFragmentManager
+                .beginTransaction()
+            fragmentTransaction.replace(R.id.container, HomeFragment())
+            fragmentTransaction.commit()
+        }
+
+        btnNotif.setOnClickListener {
+            Toast.makeText(requireContext(), "Notifikasi dibuka", Toast.LENGTH_SHORT).show()
+            // TODO: Navigasi ke fragment notifikasi
+        }
 
         return view
     }

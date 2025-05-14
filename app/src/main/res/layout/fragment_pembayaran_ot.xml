@@ -1,6 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F2EEEE"
+    tools:context=".fragments.PembayaranFragment" >
+
+    <ImageView
+        android:id="@+id/topbarpembayaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/bg_payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/backpembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpembayaran"
+        app:layout_constraintStart_toStartOf="@+id/topbarpembayaran"
+        app:layout_constraintTop_toTopOf="@id/topbarpembayaran"/>
+
+    <ImageView
+        android:id="@+id/logopembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/connect_white"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpembayaran"
+        app:layout_constraintEnd_toEndOf="@+id/topbarpembayaran"
+        app:layout_constraintStart_toStartOf="@+id/topbarpembayaran"
+        app:layout_constraintTop_toTopOf="@+id/topbarpembayaran" />
+
+    <ImageButton
+        android:id="@+id/notifpembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/notif_white"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpembayaran"
+        app:layout_constraintEnd_toEndOf="@+id/topbarpembayaran"
+        app:layout_constraintTop_toTopOf="@id/topbarpembayaran"/>
+
+    <TextView
+        android:id="@+id/txtpembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Pembayaran"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topbarpembayaran" />
+
+    <ImageButton
+        android:id="@+id/pembayaranspp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_pembayaran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtpembayaran"/>
+
+    <ImageView
+        android:id="@+id/logospp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/bill"
+        app:layout_constraintBottom_toTopOf="@+id/txtspp"
+        app:layout_constraintEnd_toEndOf="@+id/pembayaranspp"
+        app:layout_constraintStart_toStartOf="@+id/pembayaranspp"
+        app:layout_constraintTop_toTopOf="@+id/pembayaranspp" />
+
+    <TextView
+        android:id="@+id/txtspp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pembayaran SPP"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/pembayaranspp"
+        app:layout_constraintStart_toStartOf="@id/pembayaranspp"
+        app:layout_constraintTop_toBottomOf="@id/logospp"
+        app:layout_constraintBottom_toBottomOf="@+id/pembayaranspp"/>
+
+    <ImageButton
+        android:id="@+id/pembayarangedung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_pembayaran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pembayaranspp"/>
+
+    <ImageView
+        android:id="@+id/logogedung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/gedung"
+        app:layout_constraintBottom_toTopOf="@+id/txtgedung"
+        app:layout_constraintEnd_toEndOf="@+id/pembayarangedung"
+        app:layout_constraintStart_toStartOf="@+id/pembayarangedung"
+        app:layout_constraintTop_toTopOf="@+id/pembayarangedung" />
+
+    <TextView
+        android:id="@+id/txtgedung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pembayaran Gedung"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/pembayarangedung"
+        app:layout_constraintStart_toStartOf="@id/pembayarangedung"
+        app:layout_constraintTop_toBottomOf="@id/logogedung"
+        app:layout_constraintBottom_toBottomOf="@+id/pembayarangedung"/>
+
+    <ImageView
+        android:id="@+id/riwayat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/riwayat_pembayaran"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pembayarangedung"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

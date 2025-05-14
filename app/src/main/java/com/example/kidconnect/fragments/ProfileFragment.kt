@@ -58,6 +58,14 @@ class ProfileFragment : Fragment() {
             Toast.makeText(requireContext(), "Perubahan dibatalkan", Toast.LENGTH_SHORT).show()
         }
 
+        val btnBack = view.findViewById<ImageButton>(R.id.btnBack)
+
+        btnBack.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, HomeFragment())
+                .commit()
+        }
+
         return view
     }
 }

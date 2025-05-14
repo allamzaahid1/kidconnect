@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Welcome" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/namaortu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Welcome" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/notifhome"
         android:layout_width="43dp"
         android:layout_height="39dp"
         android:layout_marginTop="30dp"
@@ -71,7 +71,7 @@
         app:srcCompat="@drawable/notif" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/pengumuman"
         android:layout_width="330dp"
         android:layout_height="80dp"
         android:layout_marginTop="15dp"
@@ -79,11 +79,11 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/namaortu"
         app:srcCompat="@drawable/bg_annc" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/txtPengumuman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -92,8 +92,8 @@
         android:text="Pengumuman"
         android:textColor="#000000"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintStart_toStartOf="@+id/pengumuman"
+        app:layout_constraintTop_toTopOf="@+id/pengumuman" />
 
     <TextView
         android:id="@+id/tvAnnouncement"
@@ -105,12 +105,12 @@
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintBottom_toBottomOf="@+id/pengumuman"
+        app:layout_constraintStart_toStartOf="@+id/pengumuman"
+        app:layout_constraintTop_toBottomOf="@+id/txtPengumuman" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/aktivitas"
         android:layout_width="330dp"
         android:layout_height="247dp"
         android:layout_marginTop="15dp"
@@ -118,7 +118,7 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/pengumuman"
         app:srcCompat="@drawable/tdyact" />
 
     <TextView
@@ -131,8 +131,8 @@
         android:text="Aktivitas Hari Ini"
         android:textColor="#000000"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+        app:layout_constraintStart_toStartOf="@+id/aktivitas"
+        app:layout_constraintTop_toTopOf="@+id/aktivitas" />
 
     <TextView
         android:id="@+id/tvTodayActivity"
@@ -145,7 +145,7 @@
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/aktivitas"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
@@ -159,7 +159,7 @@
         android:textAlignment="viewEnd"
         android:textColor="@color/black"
         android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/aktivitas"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <ImageView
@@ -167,14 +167,14 @@
         android:layout_width="304dp"
         android:layout_height="201dp"
         android:rotation="90"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/aktivitas"
+        app:layout_constraintEnd_toEndOf="@+id/aktivitas"
+        app:layout_constraintStart_toStartOf="@+id/aktivitas"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/car" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/jadwal"
         android:layout_width="330dp"
         android:layout_height="160dp"
         android:layout_marginTop="15dp"
@@ -183,10 +183,10 @@
         android:src="@drawable/bgshce"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/aktivitas" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/txtJadwal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -195,32 +195,32 @@
         android:fontFamily="@font/sfbold"
         android:textSize="15dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+        app:layout_constraintStart_toStartOf="@+id/jadwal"
+        app:layout_constraintTop_toTopOf="@+id/jadwal" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/homepemgedung"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/homepemspp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/jadwal"
         app:srcCompat="@drawable/shrtc" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/homegedung"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-        app:layout_constraintStart_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="@+id/imageButton3"
+        app:layout_constraintEnd_toEndOf="@+id/homepemgedung"
+        app:layout_constraintStart_toStartOf="@+id/homepemgedung"
+        app:layout_constraintTop_toTopOf="@+id/homepemgedung"
         app:srcCompat="@drawable/building" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtpemgedung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -228,32 +228,32 @@
         android:text="Pembayaran Gedung"
         android:textColor="#19A5AF"
         android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-        app:layout_constraintStart_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintEnd_toEndOf="@+id/homepemgedung"
+        app:layout_constraintStart_toStartOf="@+id/homepemgedung"
+        app:layout_constraintTop_toBottomOf="@+id/homegedung" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/homepemspp"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/jadwal"
         app:srcCompat="@drawable/shrtc" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/homespp"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintEnd_toEndOf="@+id/homepemspp"
+        app:layout_constraintStart_toStartOf="@+id/homepemspp"
+        app:layout_constraintTop_toTopOf="@+id/homepemspp"
         app:srcCompat="@drawable/spp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtpemspp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -261,29 +261,29 @@
         android:text="Pembayaran SPP"
         android:textColor="#19A5AF"
         android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintEnd_toEndOf="@+id/homepemspp"
+        app:layout_constraintStart_toStartOf="@+id/homepemspp"
+        app:layout_constraintTop_toBottomOf="@+id/homespp" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/homeriwayat"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/homepemspp"
+        app:layout_constraintTop_toBottomOf="@+id/jadwal"
         app:srcCompat="@drawable/shrtc" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/homelogoriwayat"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-        app:layout_constraintStart_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2"
+        app:layout_constraintEnd_toEndOf="@+id/homeriwayat"
+        app:layout_constraintStart_toStartOf="@+id/homeriwayat"
+        app:layout_constraintTop_toTopOf="@+id/homeriwayat"
         app:srcCompat="@drawable/riwayat" />
 
     <TextView
@@ -295,8 +295,8 @@
         android:text="Riwayat Pembayaran"
         android:textColor="#19A5AF"
         android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-        app:layout_constraintStart_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintEnd_toEndOf="@+id/homeriwayat"
+        app:layout_constraintStart_toStartOf="@+id/homeriwayat"
+        app:layout_constraintTop_toBottomOf="@+id/homelogoriwayat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

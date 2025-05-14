@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.kidconnect.R
@@ -42,6 +44,31 @@ class HomeFragment : Fragment() {
         )
 
         showHomeData(homeItem)
+
+        val btnNotif = view.findViewById<ImageView>(R.id.notifhome)
+        val btnPembayaranGedung = view.findViewById<ImageButton>(R.id.homepemgedung)
+        val btnPembayaranSPP = view.findViewById<ImageButton>(R.id.homepemspp)
+        val btnRiwayat = view.findViewById<ImageButton>(R.id.homeriwayat)
+
+        btnNotif.setOnClickListener {
+            Toast.makeText(requireContext(), "Notifikasi dibuka", Toast.LENGTH_SHORT).show()
+            // TODO: Navigasi ke fragment notifikasi
+        }
+
+        btnPembayaranGedung.setOnClickListener {
+            Toast.makeText(requireContext(), "Pembayaran Gedung dibuka", Toast.LENGTH_SHORT).show()
+            // TODO: Navigasi ke fragment pembayaran gedung
+        }
+
+        btnPembayaranSPP.setOnClickListener {
+            Toast.makeText(requireContext(), "Pembayaran SPP dibuka", Toast.LENGTH_SHORT).show()
+            // TODO: Navigasi ke fragment pembayaran spp
+        }
+
+        btnRiwayat.setOnClickListener {
+            Toast.makeText(requireContext(), "Riwayat Pembayaran dibuka", Toast.LENGTH_SHORT).show()
+            // TODO: Navigasi ke fragment riwayat pembayaran
+        }
 
         return view
     }
