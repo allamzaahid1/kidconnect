@@ -29,6 +29,12 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".DetailPembayaranActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RekeningActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

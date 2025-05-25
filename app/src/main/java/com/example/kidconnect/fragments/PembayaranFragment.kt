@@ -1,5 +1,6 @@
 package com.example.kidconnect.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.kidconnect.DetailPembayaranActivity
+import com.example.kidconnect.MainActivity
 import com.example.kidconnect.R
 
 class PembayaranFragment : Fragment() {
@@ -25,11 +28,7 @@ class PembayaranFragment : Fragment() {
         // Tombol back
         val backButton = view.findViewById<ImageButton>(R.id.backpembayaran)
         backButton.setOnClickListener {
-            val fragmentTransaction = requireActivity()
-                .supportFragmentManager
-                .beginTransaction()
-            fragmentTransaction.replace(R.id.container, HomeFragment())
-            fragmentTransaction.commit()
+            (requireActivity() as MainActivity).switchToHome()
         }
 
         // Tombol notifikasi
@@ -42,15 +41,19 @@ class PembayaranFragment : Fragment() {
         // Tombol pembayaran SPP
         val btnSpp = view.findViewById<ImageButton>(R.id.pembayaranspp)
         btnSpp.setOnClickListener {
-            Toast.makeText(requireContext(), "Menu Pembayaran SPP dibuka", Toast.LENGTH_SHORT).show()
-            // TODO: Navigasi ke fragment pembayaran spp
+            val intent = Intent(requireContext(), DetailPembayaranActivity::class.java)
+            intent.putExtra("jenis_tagihan", "SPP")
+            intent.putExtra("biaya", 500000) // Contoh biaya SPP
+            startActivity(intent)
         }
 
         // Tombol pembayaran Gedung
         val btnGedung = view.findViewById<ImageButton>(R.id.pembayarangedung)
         btnGedung.setOnClickListener {
-            Toast.makeText(requireContext(), "Menu Pembayaran Gedung dibuka", Toast.LENGTH_SHORT).show()
-            // TODO: Navigasi ke fragment pembayaran gedung
+            val intent = Intent(requireContext(), DetailPembayaranActivity::class.java)
+            intent.putExtra("jenis_tagihan", "Gedung")
+            intent.putExtra("biaya", 1500000) // Contoh biaya Gedung
+            startActivity(intent)
         }
 
         // Tombol riwayat (ImageView, bukan ImageButton!)

@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.kidconnect.MainActivity
 import com.example.kidconnect.R
 
 class ProfileFragment : Fragment() {
@@ -23,6 +24,11 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile_ot, container, false)
+
+        val btnBack = view.findViewById<ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            (requireActivity() as MainActivity).switchToHome()
+        }
 
         val etUsername = view.findViewById<EditText>(R.id.etUsername)
         val etPhoneNumber = view.findViewById<EditText>(R.id.etPhoneNumber)
@@ -56,14 +62,6 @@ class ProfileFragment : Fragment() {
             etPwd.setText(dummyPassword)
 
             Toast.makeText(requireContext(), "Perubahan dibatalkan", Toast.LENGTH_SHORT).show()
-        }
-
-        val btnBack = view.findViewById<ImageButton>(R.id.btnBack)
-
-        btnBack.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, HomeFragment())
-                .commit()
         }
 
         return view

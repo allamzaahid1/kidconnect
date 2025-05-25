@@ -37,4 +37,12 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.container, fragment)
             .commit()
     }
+
+    fun switchToHome() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, HomeFragment())
+            .commit()
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav.selectedItemId = R.id.home
+    }
 }

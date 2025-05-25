@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kidconnect.MainActivity
 import com.example.kidconnect.R
 import com.example.kidconnect.adapter.CalendarAdapter
 import com.example.kidconnect.model.AktivitasItem
@@ -50,11 +51,7 @@ class LaporanFragment : Fragment() {
         btnNotif = view.findViewById(R.id.btnNotif)
 
         btnBack.setOnClickListener {
-            val fragmentTransaction = requireActivity()
-                .supportFragmentManager
-                .beginTransaction()
-            fragmentTransaction.replace(R.id.container, HomeFragment())
-            fragmentTransaction.commit()
+            (requireActivity() as MainActivity).switchToHome()
         }
 
         btnNotif.setOnClickListener {
