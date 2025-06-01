@@ -19,7 +19,7 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:layout_marginStart="25dp"
         android:background="@drawable/back_yellow"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,9 +31,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
-        android:src="@drawable/connect_yellow"
+        android:src="@drawable/logo_kartika_pradana_yellow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/back"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topbar" />
 
     <ImageView
@@ -76,6 +76,22 @@
         app:layout_constraintTop_toBottomOf="@id/registerfilltxt" />
 
     <EditText
+        android:id="@+id/etNIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Nomor Induk Pegawai"
+        android:visibility="gone"
+        android:inputType="textPersonName"
+        android:drawableStart="@drawable/id"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_input"
+        app:layout_constraintEnd_toEndOf="@id/registerbg"
+        app:layout_constraintStart_toStartOf="@id/registerbg"
+        app:layout_constraintTop_toBottomOf="@id/etRegUsername"/>
+
+    <EditText
         android:id="@+id/etPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,7 +104,7 @@
         android:background="@drawable/bg_input"
         app:layout_constraintEnd_toEndOf="@id/registerbg"
         app:layout_constraintStart_toStartOf="@id/registerbg"
-        app:layout_constraintTop_toBottomOf="@id/etRegUsername"/>
+        app:layout_constraintTop_toBottomOf="@id/etNIP"/>
 
     <EditText
         android:id="@+id/etEmail"
@@ -152,7 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:background="@drawable/button_transparent"
+        android:background="@drawable/button_no_border"
         app:layout_constraintEnd_toStartOf="@id/guru"
         app:layout_constraintStart_toStartOf="@id/registerbg"
         app:layout_constraintTop_toBottomOf="@id/tvtxtDaftar" />
@@ -199,6 +215,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Nama Anak"
+        android:visibility="gone"
         android:inputType="textPersonName"
         android:drawableStart="@drawable/anak"
         android:drawablePadding="15dp"
@@ -219,7 +236,7 @@
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="@id/registerbg"
         app:layout_constraintStart_toStartOf="@id/registerbg"
-        app:layout_constraintTop_toBottomOf="@id/etNamaAnak"/>
+        app:layout_constraintTop_toBottomOf="@id/etNamaAnak" />
 
     <TextView
         android:id="@+id/tvLogin"

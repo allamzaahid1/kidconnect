@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kidconnect.MainActivity
+import com.example.kidconnect.OrtuActivity
 import com.example.kidconnect.R
 import com.example.kidconnect.adapter.CalendarAdapter
 import com.example.kidconnect.model.AktivitasItem
@@ -19,7 +19,7 @@ import com.example.kidconnect.model.CalendarItem
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LaporanFragment : Fragment() {
+class LaporanFragmentOrtu : Fragment() {
 
     private lateinit var btnBack: View
     private lateinit var btnNotif: View
@@ -51,7 +51,7 @@ class LaporanFragment : Fragment() {
         btnNotif = view.findViewById(R.id.btnNotif)
 
         btnBack.setOnClickListener {
-            (requireActivity() as MainActivity).switchToHome()
+            (requireActivity() as OrtuActivity).switchToHome()
         }
 
         btnNotif.setOnClickListener {

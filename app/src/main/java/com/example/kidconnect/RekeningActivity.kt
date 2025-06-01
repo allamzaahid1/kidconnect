@@ -1,5 +1,6 @@
 package com.example.kidconnect
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
@@ -23,6 +24,7 @@ class RekeningActivity : AppCompatActivity() {
 
         btnBack = findViewById<ImageButton>(R.id.backrekening)
         btnNotif = findViewById<ImageButton>(R.id.notifpembayaran)
+
         recyclerView = findViewById(R.id.listbank)
 
         btnBack.setOnClickListener {
@@ -43,7 +45,14 @@ class RekeningActivity : AppCompatActivity() {
             BankItem(R.drawable.bni, "ALBERT EINSTEIN", "5566778899")
         )
 
-        adapter = BankAdapter(listRekening)
+        adapter = BankAdapter(listRekening) { selectedBank ->
+            val intent = Intent(this, DetailRekeningActivity::class.java).apply {
+                putExtra("logoResId", selectedBank.logoResId)
+                putExtra("nama", selectedBank.nama)
+                putExtra("noRekening", selectedBank.noRekening)
+            }
+            startActivity(intent)
+        }
         recyclerView.adapter = adapter
     }
 }

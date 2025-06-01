@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.kidconnect.R
 import com.example.kidconnect.model.HomeItem
 
-class HomeFragment : Fragment() {
+class HomeFragmentOrtu : Fragment() {
 
     private lateinit var tvName: TextView
     private lateinit var tvAnnouncement: TextView
@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
 
         val btnNotif = view.findViewById<ImageView>(R.id.notifhome)
         val btnPembayaranGedung = view.findViewById<ImageButton>(R.id.homepemgedung)
-        val btnPembayaranSPP = view.findViewById<ImageButton>(R.id.homepemspp)
+        val btnKritikSaran = view.findViewById<ImageButton>(R.id.homekritik)
         val btnRiwayat = view.findViewById<ImageButton>(R.id.homeriwayat)
 
         btnNotif.setOnClickListener {
@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
             // TODO: Navigasi ke fragment pembayaran gedung
         }
 
-        btnPembayaranSPP.setOnClickListener {
+        btnKritikSaran.setOnClickListener {
             Toast.makeText(requireContext(), "Pembayaran SPP dibuka", Toast.LENGTH_SHORT).show()
             // TODO: Navigasi ke fragment pembayaran spp
         }

@@ -1,19 +1,18 @@
 package com.example.kidconnect.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidconnect.R
 import com.example.kidconnect.model.BankItem
-import java.util.*
 
-class BankAdapter(private val bankList: List<BankItem>) :
-    RecyclerView.Adapter<BankAdapter.BankViewHolder>() {
+class BankAdapter(
+    private val bankList: List<BankItem>,
+    private val onItemClick: (BankItem) -> Unit
+) : RecyclerView.Adapter<BankAdapter.BankViewHolder>() {
 
     inner class BankViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgLogoBank: ImageView = itemView.findViewById(R.id.imgLogoBank)
@@ -31,6 +30,10 @@ class BankAdapter(private val bankList: List<BankItem>) :
         holder.imgLogoBank.setImageResource(bank.logoResId)
         holder.tvNama.text = bank.nama
         holder.tvNoRekening.text = bank.noRekening
+
+        holder.itemView.setOnClickListener {
+            onItemClick(bank)
+        }
     }
 
     override fun getItemCount(): Int = bankList.size

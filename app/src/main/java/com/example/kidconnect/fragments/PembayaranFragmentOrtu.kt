@@ -10,10 +10,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.kidconnect.DetailPembayaranActivity
-import com.example.kidconnect.MainActivity
+import com.example.kidconnect.OrtuActivity
 import com.example.kidconnect.R
 
-class PembayaranFragment : Fragment() {
+class PembayaranFragmentOrtu : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +28,7 @@ class PembayaranFragment : Fragment() {
         // Tombol back
         val backButton = view.findViewById<ImageButton>(R.id.backpembayaran)
         backButton.setOnClickListener {
-            (requireActivity() as MainActivity).switchToHome()
+            (requireActivity() as OrtuActivity).switchToHome()
         }
 
         // Tombol notifikasi

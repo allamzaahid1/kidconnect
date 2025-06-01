@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
                 if (username == "ortu" && password == "1234") {
                     Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
                     // Pindah ke halaman utama
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, OrtuActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {

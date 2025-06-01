@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:src="@drawable/connect_white"
+        android:src="@drawable/logo_kartika_pradana"
         app:layout_constraintBottom_toBottomOf="@+id/topbarpembayaran"
         app:layout_constraintEnd_toEndOf="@+id/topbarpembayaran"
         app:layout_constraintStart_toStartOf="@+id/topbarpembayaran"

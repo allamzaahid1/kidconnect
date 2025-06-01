@@ -2,6 +2,7 @@ package com.example.kidconnect
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
@@ -13,15 +14,17 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var etConfPassword: EditText
-    private lateinit var etNamaAnak: EditText
     private lateinit var registerBtn: ImageButton
     private lateinit var tvLogin: TextView
+
+    private lateinit var etNamaAnak: EditText
+    private lateinit var etNIP: EditText
 
     private var role: String = ""  // "ortu" atau "guru"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_register_ot)
+        setContentView(R.layout.layout_register)
 
         backButton = findViewById(R.id.back)
         backButton.setOnClickListener {
@@ -36,21 +39,29 @@ class RegisterActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etRegPassword)
         etConfPassword = findViewById(R.id.etConfPassword)
-        etNamaAnak = findViewById(R.id.etNamaAnak)
         registerBtn = findViewById(R.id.register)
         tvLogin = findViewById(R.id.tvLogin)
+
+        etNamaAnak = findViewById(R.id.etNamaAnak)
+        etNIP = findViewById(R.id.etNIP)
 
         val ortuBtn = findViewById<ImageButton>(R.id.ortu)
         val guruBtn = findViewById<ImageButton>(R.id.guru)
 
         ortuBtn.setOnClickListener {
             role = "ortu"
-            Toast.makeText(this, "Dipilih: Orangtua", Toast.LENGTH_SHORT).show()
+            ortuBtn.setBackgroundResource(R.drawable.button_transparent)
+            guruBtn.setBackgroundResource(R.drawable.button_no_border)
+            etNamaAnak.visibility = View.VISIBLE
+            etNIP.visibility = View.GONE
         }
 
         guruBtn.setOnClickListener {
             role = "guru"
-            Toast.makeText(this, "Dipilih: Guru", Toast.LENGTH_SHORT).show()
+            ortuBtn.setBackgroundResource(R.drawable.button_no_border)
+            guruBtn.setBackgroundResource(R.drawable.button_transparent)
+            etNamaAnak.visibility = View.GONE
+            etNIP.visibility = View.VISIBLE
         }
 
         registerBtn.setOnClickListener {
@@ -69,7 +80,9 @@ class RegisterActivity : AppCompatActivity() {
         val email = etEmail.text.toString().trim()
         val password = etPassword.text.toString()
         val confPassword = etConfPassword.text.toString()
+
         val namaAnak = etNamaAnak.text.toString().trim()
+        val nip = etNIP.text.toString().trim()
 
         if (username.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()
             || confPassword.isEmpty() || namaAnak.isEmpty() || role.isEmpty()
@@ -86,7 +99,6 @@ class RegisterActivity : AppCompatActivity() {
         // Proses simpan ke database atau kirim ke server
         Toast.makeText(this, "Pendaftaran berhasil sebagai $role", Toast.LENGTH_LONG).show()
 
-        // Arahkan ke login atau dashboard
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.LaporanFragment" >
+    tools:context=".fragments.LaporanFragmentOrtu" >
 
     <!-- Header -->
     <ImageView
@@ -24,7 +24,7 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/back"
         android:background="@android:color/transparent"
@@ -33,10 +33,10 @@
 
     <ImageView
         android:id="@+id/txtTitle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        android:src="@drawable/connect_white"
+        android:src="@drawable/logo_kartika_pradana"
         app:layout_constraintEnd_toEndOf="@+id/bgHeader"
         app:layout_constraintStart_toStartOf="@+id/bgHeader"
         app:layout_constraintTop_toTopOf="@+id/bgHeader"/>

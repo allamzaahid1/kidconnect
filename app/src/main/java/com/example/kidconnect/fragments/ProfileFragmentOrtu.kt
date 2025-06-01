@@ -8,10 +8,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.kidconnect.MainActivity
+import com.example.kidconnect.OrtuActivity
 import com.example.kidconnect.R
 
-class ProfileFragment : Fragment() {
+class ProfileFragmentOrtu : Fragment() {
 
     // Data dummy
     private var dummyNama = "ortu"
@@ -27,7 +27,7 @@ class ProfileFragment : Fragment() {
 
         val btnBack = view.findViewById<ImageButton>(R.id.btnBack)
         btnBack.setOnClickListener {
-            (requireActivity() as MainActivity).switchToHome()
+            (requireActivity() as OrtuActivity).switchToHome()
         }
 
         val etUsername = view.findViewById<EditText>(R.id.etUsername)
