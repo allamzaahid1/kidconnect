@@ -15,16 +15,14 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_login) // Ganti dengan nama layout-mu jika berbeda
+        setContentView(R.layout.layout_login)
 
-        // Inisialisasi view
         etUsername = findViewById(R.id.etUsername)
         etPassword = findViewById(R.id.etPassword)
         loginButton = findViewById(R.id.login)
         registerButton = findViewById(R.id.register)
         tvDaftar = findViewById(R.id.tvDaftar)
 
-        // Aksi ketika tombol login ditekan
         loginButton.setOnClickListener {
             val username = etUsername.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -32,11 +30,15 @@ class LoginActivity : AppCompatActivity() {
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Username dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
             } else {
-                // TODO: Ganti logika ini dengan autentikasi backend
+                // Contoh logika hak akses (sementara)
                 if (username == "ortu" && password == "1234") {
-                    Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
-                    // Pindah ke halaman utama
+                    Toast.makeText(this, "Login sebagai Orang Tua", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, OrtuActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else if (username == "guru" && password == "4321") {
+                    Toast.makeText(this, "Login sebagai Guru", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, GuruActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
@@ -45,16 +47,12 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // Aksi ketika tombol daftar ditekan
         registerButton.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        // Alternatif tombol teks "Daftar"
         tvDaftar.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }

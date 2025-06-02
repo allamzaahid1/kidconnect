@@ -1,7 +1,12 @@
 package com.example.kidconnect.model
 
 data class BankItem(
-    val logoResId: Int,
-    val nama: String,
-    val noRekening: String
-)
+    val namaBank: String,
+    val namaPemilik: String,
+    val nomorRekening: String,
+    val logoResId: Int
+) {
+    override fun toString(): String {
+        return namaBank
+    }
+}

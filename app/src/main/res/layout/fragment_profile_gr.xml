@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2EEEE"
-    tools:context=".fragments.ProfileFragmentOrtu" >
+    tools:context=".fragments.ProfileFragmentGuru" >
 
     <ImageView
         android:id="@+id/topbarprofile"
@@ -54,40 +54,51 @@
     <ImageView
         android:id="@+id/profilebg"
         android:layout_width="wrap_content"
+        android:layout_height="570dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_profile"
+        android:layout_marginTop="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topbarprofile" />
+
+    <ImageView
+        android:id="@+id/fotoguru"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginStart="30dp"
-        android:src="@drawable/bg_profile_edit"
-        app:layout_constraintTop_toBottomOf="@id/topbarprofile"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:src="@drawable/guru"
+        android:layout_marginTop="-50dp"
+        app:layout_constraintStart_toStartOf="@+id/profilebg"
+        app:layout_constraintEnd_toEndOf="@+id/profilebg"
+        app:layout_constraintTop_toTopOf="@+id/profilebg"/>
 
     <TextView
         android:id="@+id/profiletxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="PROFIL"
+        android:layout_marginTop="30dp"
+        android:text="Nama Guru"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@id/profilebg"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toTopOf="@id/profilebg" />
+        app:layout_constraintTop_toBottomOf="@+id/fotoguru" />
 
     <TextView
-        android:id="@+id/nama"
+        android:id="@+id/kelas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="40dp"
-        android:text="Nama"
+        android:text="Kelas yang diajar"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/profilebg"
         app:layout_constraintTop_toBottomOf="@id/profiletxt" />
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etKelas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -95,10 +106,10 @@
         android:inputType="textPersonName"
         android:padding="10dp"
         android:gravity="center"
-        android:text="username"
+        android:text="Kelas A"
         app:layout_constraintEnd_toEndOf="@id/profilebg"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/nama" />
+        app:layout_constraintTop_toBottomOf="@id/kelas" />
 
     <TextView
         android:id="@+id/telepon"
@@ -110,7 +121,7 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/etUsername" />
+        app:layout_constraintTop_toBottomOf="@id/etKelas" />
 
     <EditText
         android:id="@+id/etPhoneNumber"
@@ -183,9 +194,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/tombol_batal"
-        app:layout_constraintBottom_toBottomOf="@+id/profilebg"
+        app:layout_constraintTop_toBottomOf="@+id/etPwd"
         app:layout_constraintEnd_toStartOf="@+id/simpan"
         app:layout_constraintStart_toStartOf="@id/profilebg" />
 
@@ -207,9 +218,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/tombol_simpan"
-        app:layout_constraintBottom_toBottomOf="@+id/profilebg"
+        app:layout_constraintTop_toBottomOf="@+id/etPwd"
         app:layout_constraintEnd_toEndOf="@id/profilebg"
         app:layout_constraintStart_toEndOf="@id/batal"/>
 

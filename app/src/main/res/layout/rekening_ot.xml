@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2EEEE"
+    tools:context=".fragments.PembayaranFragmentOrtu" >
+
+    <ImageView
+        android:id="@+id/topbarpembayaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/bg_payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/backrekening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpembayaran"
+        app:layout_constraintStart_toStartOf="@+id/topbarpembayaran"
+        app:layout_constraintTop_toTopOf="@id/topbarpembayaran"/>
+
+    <ImageView
+        android:id="@+id/logopembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo_kartika_pradana"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpembayaran"
+        app:layout_constraintEnd_toEndOf="@+id/topbarpembayaran"
+        app:layout_constraintStart_toStartOf="@+id/topbarpembayaran"
+        app:layout_constraintTop_toTopOf="@+id/topbarpembayaran" />
+
+    <ImageButton
+        android:id="@+id/notifpembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/notif_white"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpembayaran"
+        app:layout_constraintEnd_toEndOf="@+id/topbarpembayaran"
+        app:layout_constraintTop_toTopOf="@id/topbarpembayaran"/>
+
+    <TextView
+        android:id="@+id/txtrekening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Pilih Rekening Tujuan"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topbarpembayaran" />
+
+    <TextView
+        android:id="@+id/txtlihatsemua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:text="Lihat Semua"
+        android:textColor="@color/main"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtrekening" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bankInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Pilih Bank"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:startIconDrawable="@drawable/mandiri_40"
+        app:layout_constraintTop_toBottomOf="@id/txtlihatsemua"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/bankDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:drawableEnd="@drawable/arrow_down"
+            android:padding="16dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/rekening"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/bg_rekening"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/bankInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/namaRekening"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nama Pemilik"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toTopOf="@+id/rekening"
+        app:layout_constraintStart_toStartOf="@+id/rekening"
+        app:layout_constraintEnd_toEndOf="@+id/rekening" />
+
+    <ImageView
+        android:id="@+id/norekening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/bg_norek"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/namaRekening"
+        app:layout_constraintStart_toStartOf="@+id/rekening" />
+
+    <TextView
+        android:id="@+id/nomorRekening"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0000000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="@+id/norekening"
+        app:layout_constraintStart_toStartOf="@+id/norekening"
+        app:layout_constraintEnd_toStartOf="@+id/copyButton"
+        app:layout_constraintBottom_toBottomOf="@+id/norekening" />
+
+    <ImageButton
+        android:id="@+id/copyButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/copy"
+        android:visibility="gone"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/norekening"
+        app:layout_constraintTop_toTopOf="@+id/norekening"
+        app:layout_constraintBottom_toBottomOf="@+id/norekening"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

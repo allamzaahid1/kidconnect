@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2EEEE"
+    tools:context=".DetailLaporanActivity" >
+
+    <ImageView
+        android:id="@+id/topbarlaporan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/bg_payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarlaporan"
+        app:layout_constraintStart_toStartOf="@+id/topbarlaporan"
+        app:layout_constraintTop_toTopOf="@+id/topbarlaporan"/>
+
+    <ImageView
+        android:id="@+id/logolaporan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo_kartika_pradana"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarlaporan"
+        app:layout_constraintEnd_toEndOf="@+id/topbarlaporan"
+        app:layout_constraintStart_toStartOf="@+id/topbarlaporan"
+        app:layout_constraintTop_toTopOf="@+id/topbarlaporan" />
+
+    <ImageButton
+        android:id="@+id/notiflaporan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/notif_white"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarlaporan"
+        app:layout_constraintEnd_toEndOf="@+id/topbarlaporan"
+        app:layout_constraintTop_toTopOf="@+id/topbarlaporan"/>
+
+    <ImageView
+        android:id="@+id/kegiatanbg"
+        android:layout_width="wrap_content"
+        android:layout_height="650dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/bg_profile_edit"
+        app:layout_constraintTop_toBottomOf="@+id/topbarlaporan"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/profiletxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:text="Aktivitas"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toTopOf="@id/kegiatanbg" />
+
+    <ImageView
+        android:id="@+id/kegiatan"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/car"
+        android:rotation="90"
+        app:layout_constraintEnd_toEndOf="@+id/kegiatanbg"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@+id/profiletxt" />
+
+    <TextView
+        android:id="@+id/deskripsitxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:text="Deskripsi"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@id/kegiatan" />
+
+    <TextView
+        android:id="@+id/tvdeskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:text="deskripsi aktivitas"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@id/deskripsitxt" />
+
+    <TextView
+        android:id="@+id/haritxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:text="Hari dan Tanggal"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@id/tvdeskripsi" />
+
+    <TextView
+        android:id="@+id/tvhari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:text="Senin, 14 Mei 2025"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@id/haritxt" />
+
+    <TextView
+        android:id="@+id/waktutxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:text="Waktu Kegiatan"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@id/tvhari" />
+
+    <TextView
+        android:id="@+id/tvwaktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:text="07.00 - 08.00"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@id/waktutxt" />
+
+    <TextView
+        android:id="@+id/pesertatxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:text="Peserta"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@id/tvwaktu" />
+
+    <TextView
+        android:id="@+id/tvpeserta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:text="Seluruh Anak"
+        android:textColor="@color/black"
+
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/kegiatanbg"
+        app:layout_constraintTop_toBottomOf="@id/pesertatxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

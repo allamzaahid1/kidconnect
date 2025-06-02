@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2EEEE"
+    tools:context=".fragments.HomeFragmentGuru" >
+
+    <ImageView
+        android:id="@+id/topbarhomegr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/bg_payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/backhomegr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarhomegr"
+        app:layout_constraintStart_toStartOf="@+id/topbarhomegr"
+        app:layout_constraintTop_toTopOf="@id/topbarhomegr"/>
+
+    <ImageView
+        android:id="@+id/logohomegr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo_kartika_pradana"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarhomegr"
+        app:layout_constraintEnd_toEndOf="@+id/topbarhomegr"
+        app:layout_constraintStart_toStartOf="@+id/topbarhomegr"
+        app:layout_constraintTop_toTopOf="@+id/topbarhomegr" />
+
+    <ImageView
+        android:id="@+id/btnNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/notif_white"
+        app:layout_constraintEnd_toEndOf="@+id/topbarhomegr"
+        app:layout_constraintTop_toTopOf="@+id/topbarhomegr"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarhomegr" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/sfbold"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/welcome"
+        app:layout_constraintTop_toBottomOf="@+id/topbarhomegr" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="-60dp"
+        android:fontFamily="@font/sfbold"
+        android:text="Selamat Datang,"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/topbarhomegr"
+        app:layout_constraintStart_toStartOf="@+id/topbarhomegr"
+        app:layout_constraintTop_toBottomOf="@+id/topbarhomegr" />
+
+    <ImageView
+        android:id="@+id/pengumuman"
+        android:layout_width="330dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome"
+        app:srcCompat="@drawable/bg_annc" />
+
+    <TextView
+        android:id="@+id/txtPengumuman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/sfbold"
+        android:text="Pengumuman"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/pengumuman"
+        app:layout_constraintTop_toTopOf="@+id/pengumuman" />
+
+    <TextView
+        android:id="@+id/tvAnnouncement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/sfmedium"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/pengumuman"
+        app:layout_constraintTop_toBottomOf="@+id/txtPengumuman" />
+
+    <ImageButton
+        android:id="@+id/tambahpengumuman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/tambah_pengumuman"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@+id/pengumuman"
+        app:layout_constraintTop_toTopOf="@+id/pengumuman" />
+
+    <ImageView
+        android:id="@+id/jadwalhari"
+        android:layout_width="330dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/bgshce"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pengumuman" />
+
+    <TextView
+        android:id="@+id/txtJadwalhari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:text="Jadwal Hari Ini"
+        android:fontFamily="@font/sfbold"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/jadwalhari"
+        app:layout_constraintTop_toTopOf="@+id/jadwalhari" />
+
+    <ImageButton
+        android:id="@+id/tambahaktivitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/tambah_aktivitas"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@+id/jadwalhari"
+        app:layout_constraintTop_toTopOf="@+id/jadwalhari" />
+
+    <TextView
+        android:id="@+id/txttambahaktivitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambah"
+        android:fontFamily="@font/sfbold"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/tambahaktivitas"
+        app:layout_constraintTop_toTopOf="@+id/tambahaktivitas"
+        app:layout_constraintBottom_toBottomOf="@+id/tambahaktivitas"
+        app:layout_constraintEnd_toEndOf="@+id/tambahaktivitas"/>
+
+    <ImageView
+        android:id="@+id/jadwalminggu"
+        android:layout_width="330dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/bgshce"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jadwalhari" />
+
+    <TextView
+        android:id="@+id/txtJadwalminggu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:text="Jadwal Minggu Ini"
+        android:fontFamily="@font/sfbold"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/jadwalminggu"
+        app:layout_constraintTop_toTopOf="@+id/jadwalminggu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

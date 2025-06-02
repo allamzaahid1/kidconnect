@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2EEEE"
-    tools:context=".fragments.ProfileFragmentOrtu" >
+    tools:context=".InputLaporanActivity" >
 
     <ImageView
-        android:id="@+id/topbarprofile"
+        android:id="@+id/topbarlaporan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="-10dp"
@@ -25,31 +25,31 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="25dp"
         android:background="@drawable/back"
-        app:layout_constraintBottom_toBottomOf="@+id/topbarprofile"
-        app:layout_constraintStart_toStartOf="@+id/topbarprofile"
-        app:layout_constraintTop_toTopOf="@id/topbarprofile"/>
+        app:layout_constraintBottom_toBottomOf="@+id/topbarlaporan"
+        app:layout_constraintStart_toStartOf="@+id/topbarlaporan"
+        app:layout_constraintTop_toTopOf="@id/topbarlaporan"/>
 
     <ImageView
-        android:id="@+id/logoprofile"
+        android:id="@+id/logolaporan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:src="@drawable/logo_kartika_pradana"
-        app:layout_constraintBottom_toBottomOf="@+id/topbarprofile"
-        app:layout_constraintEnd_toEndOf="@+id/topbarprofile"
-        app:layout_constraintStart_toStartOf="@+id/topbarprofile"
-        app:layout_constraintTop_toTopOf="@+id/topbarprofile" />
+        app:layout_constraintBottom_toBottomOf="@+id/topbarlaporan"
+        app:layout_constraintEnd_toEndOf="@+id/topbarlaporan"
+        app:layout_constraintStart_toStartOf="@+id/topbarlaporan"
+        app:layout_constraintTop_toTopOf="@+id/topbarlaporan" />
 
     <ImageButton
-        android:id="@+id/notifprofile"
+        android:id="@+id/notiflaporan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="45dp"
         android:background="@drawable/notif_white"
-        app:layout_constraintBottom_toBottomOf="@+id/topbarprofile"
-        app:layout_constraintEnd_toEndOf="@+id/topbarprofile"
-        app:layout_constraintTop_toTopOf="@id/topbarprofile"/>
+        app:layout_constraintBottom_toBottomOf="@+id/topbarlaporan"
+        app:layout_constraintEnd_toEndOf="@+id/topbarlaporan"
+        app:layout_constraintTop_toTopOf="@id/topbarlaporan"/>
 
     <ImageView
         android:id="@+id/profilebg"
@@ -58,134 +58,112 @@
         android:layout_marginTop="60dp"
         android:layout_marginStart="30dp"
         android:src="@drawable/bg_profile_edit"
-        app:layout_constraintTop_toBottomOf="@id/topbarprofile"
+        app:layout_constraintTop_toBottomOf="@id/topbarlaporan"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/profiletxt"
+        android:id="@+id/namaaktivitas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="PROFIL"
+        android:layout_marginStart="40dp"
+        android:text="Nama Aktivitas"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@id/profilebg"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/profilebg"
         app:layout_constraintTop_toTopOf="@id/profilebg" />
 
-    <TextView
-        android:id="@+id/nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"
-        android:text="Nama"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/profiletxt" />
-
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etnamaaktivitas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/input_profile"
-        android:inputType="textPersonName"
         android:padding="10dp"
-        android:gravity="center"
-        android:text="username"
+        android:hint="Nama Kegiatan"
         app:layout_constraintEnd_toEndOf="@id/profilebg"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/nama" />
+        app:layout_constraintTop_toBottomOf="@id/namaaktivitas" />
 
     <TextView
-        android:id="@+id/telepon"
+        android:id="@+id/tanggal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="40dp"
-        android:text="Telepon"
+        android:text="Tanggal"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/etUsername" />
+        app:layout_constraintTop_toBottomOf="@id/etnamaaktivitas" />
 
     <EditText
-        android:id="@+id/etPhoneNumber"
+        android:id="@+id/ettanggal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/input_profile"
-        android:inputType="phone"
         android:padding="10dp"
-        android:gravity="center"
-        android:text="08123456789"
+        android:hint="12 Januari 2025"
         app:layout_constraintEnd_toEndOf="@id/profilebg"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/telepon" />
+        app:layout_constraintTop_toBottomOf="@id/tanggal" />
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/pengajar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="40dp"
-        android:text="Email"
+        android:text="Pengajar"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/etPhoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/ettanggal" />
 
     <EditText
-        android:id="@+id/etEmailAddress"
+        android:id="@+id/etpengajar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/input_profile"
-        android:inputType="textEmailAddress"
         android:padding="10dp"
-        android:gravity="center"
-        android:text="email@example.com"
+        android:hint="Nama Guru"
         app:layout_constraintEnd_toEndOf="@id/profilebg"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/email" />
+        app:layout_constraintTop_toBottomOf="@id/pengajar" />
 
     <TextView
-        android:id="@+id/password"
+        android:id="@+id/deskripsi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="40dp"
-        android:text="Password"
+        android:text="Deskripsi"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/etEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@id/etpengajar" />
 
     <EditText
-        android:id="@+id/etPwd"
+        android:id="@+id/etdesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/input_profile"
-        android:inputType="textPassword"
         android:padding="10dp"
-        android:gravity="center"
-        android:text="password"
+        android:hint="Deskripsi Kegiatan"
         app:layout_constraintEnd_toEndOf="@id/profilebg"
         app:layout_constraintStart_toStartOf="@id/profilebg"
-        app:layout_constraintTop_toBottomOf="@id/password" />
+        app:layout_constraintTop_toBottomOf="@id/deskripsi" />
 
     <ImageButton
         android:id="@+id/batal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/tombol_batal"
-        app:layout_constraintBottom_toBottomOf="@+id/profilebg"
+        app:layout_constraintTop_toBottomOf="@+id/profilebg"
         app:layout_constraintEnd_toStartOf="@+id/simpan"
         app:layout_constraintStart_toStartOf="@id/profilebg" />
 
@@ -206,10 +184,9 @@
         android:id="@+id/simpan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/tombol_simpan"
-        app:layout_constraintBottom_toBottomOf="@+id/profilebg"
+        app:layout_constraintTop_toBottomOf="@+id/profilebg"
         app:layout_constraintEnd_toEndOf="@id/profilebg"
         app:layout_constraintStart_toEndOf="@id/batal"/>
 

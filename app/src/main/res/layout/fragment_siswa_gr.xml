@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2EEEE"
+    tools:context=".fragments.SiswaFragmentGuru" >
+
+    <ImageView
+        android:id="@+id/topbarsiswa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/bg_payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarsiswa"
+        app:layout_constraintStart_toStartOf="@+id/topbarsiswa"
+        app:layout_constraintTop_toTopOf="@+id/topbarsiswa"/>
+
+    <ImageView
+        android:id="@+id/logosiswa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo_kartika_pradana"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarsiswa"
+        app:layout_constraintEnd_toEndOf="@+id/topbarsiswa"
+        app:layout_constraintStart_toStartOf="@+id/topbarsiswa"
+        app:layout_constraintTop_toTopOf="@+id/topbarsiswa" />
+
+    <ImageButton
+        android:id="@+id/notifsiswa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/notif_white"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarsiswa"
+        app:layout_constraintEnd_toEndOf="@+id/topbarsiswa"
+        app:layout_constraintTop_toTopOf="@+id/topbarsiswa"/>
+
+    <TextView
+        android:id="@+id/txtdaftarkelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="DAFTAR KELAS"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topbarsiswa" />
+
+    <ImageButton
+        android:id="@+id/kelasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_siswa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtdaftarkelas"/>
+
+    <TextView
+        android:id="@+id/txtkelasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kelas A"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/kelasa"
+        app:layout_constraintStart_toStartOf="@+id/kelasa"
+        app:layout_constraintTop_toTopOf="@+id/kelasa"
+        app:layout_constraintBottom_toBottomOf="@+id/kelasa"/>
+
+    <ImageButton
+        android:id="@+id/kelasb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_siswa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kelasa"/>
+
+    <TextView
+        android:id="@+id/txtkelasb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kelas B"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/kelasb"
+        app:layout_constraintStart_toStartOf="@+id/kelasb"
+        app:layout_constraintTop_toTopOf="@+id/kelasb"
+        app:layout_constraintBottom_toBottomOf="@+id/kelasb"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

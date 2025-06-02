@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2EEEE"
+    tools:context=".PengumumanActivity" >
+
+    <ImageView
+        android:id="@+id/topbarpengumuman"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/bg_payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpengumuman"
+        app:layout_constraintStart_toStartOf="@+id/topbarpengumuman"
+        app:layout_constraintTop_toTopOf="@+id/topbarpengumuman"/>
+
+    <ImageView
+        android:id="@+id/logopengumuman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo_kartika_pradana"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpengumuman"
+        app:layout_constraintEnd_toEndOf="@+id/topbarpengumuman"
+        app:layout_constraintStart_toStartOf="@+id/topbarpengumuman"
+        app:layout_constraintTop_toTopOf="@+id/topbarpengumuman" />
+
+    <ImageButton
+        android:id="@+id/notifpengumuman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/notif_white"
+        app:layout_constraintBottom_toBottomOf="@+id/topbarpengumuman"
+        app:layout_constraintEnd_toEndOf="@+id/topbarpengumuman"
+        app:layout_constraintTop_toTopOf="@+id/topbarpengumuman"/>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Tambahkan Pengumuman"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topbarpengumuman" />
+
+    <!-- Input pengumuman -->
+    <EditText
+        android:id="@+id/etPengumuman"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/big_field"
+        android:hint="Tuliskan Pengumuman disini"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#9E9E9E"
+        android:textSize="14sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <!-- Tombol Kirim -->
+    <ImageButton
+        android:id="@+id/btnKirim"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tombol_simpan"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPengumuman" />
+
+    <TextView
+        android:id="@+id/txtkirim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Kirim"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnKirim"
+        app:layout_constraintStart_toStartOf="@+id/btnKirim"
+        app:layout_constraintTop_toTopOf="@+id/btnKirim"
+        app:layout_constraintBottom_toBottomOf="@+id/btnKirim"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

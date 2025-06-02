@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -13,15 +14,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidconnect.DetailLaporanActivity
-import com.example.kidconnect.OrtuActivity
+import com.example.kidconnect.GuruActivity
+import com.example.kidconnect.InputLaporanActivity
 import com.example.kidconnect.R
 import com.example.kidconnect.adapter.CalendarAdapter
-import com.example.kidconnect.model.LaporanItem
 import com.example.kidconnect.model.CalendarItem
+import com.example.kidconnect.model.LaporanItem
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LaporanFragmentOrtu : Fragment() {
+class LaporanFragmentGuru : Fragment() {
 
     private lateinit var btnBack: View
     private lateinit var btnNotif: View
@@ -30,7 +32,7 @@ class LaporanFragmentOrtu : Fragment() {
     private lateinit var layoutAktivitas: LinearLayout
     private lateinit var calendarAdapter: CalendarAdapter
     private lateinit var textBulan: TextView
-    private lateinit var mainInflater: LayoutInflater
+    private lateinit var btnTambah: ImageButton
 
     private var calendarList = mutableListOf<CalendarItem>()
 
@@ -38,14 +40,12 @@ class LaporanFragmentOrtu : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_laporan_ot, container, false)
-
-        // Simpan inflater untuk digunakan nanti
-        mainInflater = inflater
+        val view = inflater.inflate(R.layout.fragment_laporan_gr, container, false)
 
         recyclerViewCalendar = view.findViewById(R.id.recyclerViewCalendar)
         layoutAktivitas = view.findViewById(R.id.layoutAktivitasContainer)
         textBulan = view.findViewById(R.id.textBulan)
+        btnTambah = view.findViewById(R.id.addlaporan)
 
         setupCalendar()
 
@@ -53,12 +53,17 @@ class LaporanFragmentOrtu : Fragment() {
         btnNotif = view.findViewById(R.id.btnNotif)
 
         btnBack.setOnClickListener {
-            (requireActivity() as OrtuActivity).switchToHome()
+            (requireActivity() as GuruActivity).switchToHome()
         }
 
         btnNotif.setOnClickListener {
             Toast.makeText(requireContext(), "Notifikasi dibuka", Toast.LENGTH_SHORT).show()
             // TODO: Navigasi ke fragment notifikasi
+        }
+
+        btnTambah.setOnClickListener {
+            val intent = Intent(requireContext(), InputLaporanActivity::class.java)
+            startActivity(intent)
         }
 
         return view
@@ -77,7 +82,6 @@ class LaporanFragmentOrtu : Fragment() {
             val dayName = SimpleDateFormat("EEE", Locale("id", "ID")).format(calendar.time)
             val dateNum = calendar.get(Calendar.DAY_OF_MONTH)
             val dateObj = calendar.time
-
             val isSelected = dateNum == currentDay
 
             calendarList.add(CalendarItem(dayName, dateNum, dateObj, isSelected))
@@ -89,45 +93,30 @@ class LaporanFragmentOrtu : Fragment() {
         calendarAdapter = CalendarAdapter(calendarList) { position ->
             calendarAdapter.updateSelection(position)
             updateMonthText(calendarAdapter.getDateAt(position))
-            val dummyData = listOf(
-                LaporanItem("08:00", "Senam Pagi", "Bu Rina", "Senam pagi bersama anak-anak TK.", R.drawable.car),
-                LaporanItem("09:00", "Mewarnai", "Pak Dodi", "Belajar mewarnai buah-buahan.", R.drawable.car),
-                LaporanItem("10:00", "Makan Siang", "Bu Indah", "Makan bersama di kelas.", R.drawable.car)
-            )
-            loadAktivitas(dummyData, position)
+            val dummyData = getDummyLaporan()
+            loadAktivitas(dummyData)
         }
 
         recyclerViewCalendar.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerViewCalendar.adapter = calendarAdapter
 
-        val selectedPosition = calendarList.indexOfFirst { it.isSelected }
-        val dummyData = listOf(
-            LaporanItem("08:00", "Senam Pagi", "Bu Rina", "Senam pagi bersama anak-anak TK.", R.drawable.car),
-            LaporanItem("09:00", "Mewarnai", "Pak Dodi", "Belajar mewarnai buah-buahan.", R.drawable.car),
-            LaporanItem("10:00", "Makan Siang", "Bu Indah", "Makan bersama di kelas.", R.drawable.car)
-        )
-        loadAktivitas(dummyData, selectedPosition)
-
+        val dummyData = getDummyLaporan()
+        loadAktivitas(dummyData)
     }
 
     private fun updateMonthText(date: Date) {
         val monthFormat = SimpleDateFormat("MMMM yyyy", Locale("id", "ID"))
-        val formattedMonth = monthFormat.format(date)
-        textBulan.text = formattedMonth
+        textBulan.text = monthFormat.format(date)
         textBulan.setTextColor(Color.WHITE)
     }
 
-    private fun loadAktivitas(aktivitasList: List<LaporanItem>, hariIndex: Int) {
-        val layoutAktivitasContainer = view?.findViewById<LinearLayout>(R.id.layoutAktivitasContainer)
-        layoutAktivitasContainer?.removeAllViews()
-
+    private fun loadAktivitas(aktivitasList: List<LaporanItem>) {
+        layoutAktivitas.removeAllViews()
         val inflater = LayoutInflater.from(requireContext())
 
-        val filteredAktivitas = aktivitasList // atau filter jika ada field hari
-
-        for (item in filteredAktivitas) {
-            val card = inflater.inflate(R.layout.item_laporan, layoutAktivitasContainer, false)
+        for (item in aktivitasList) {
+            val card = inflater.inflate(R.layout.item_laporan, layoutAktivitas, false)
 
             val tvJudul = card.findViewById<TextView>(R.id.textViewJudul)
             val tvPengajar = card.findViewById<TextView>(R.id.textViewPengajar)
@@ -137,7 +126,6 @@ class LaporanFragmentOrtu : Fragment() {
             tvPengajar.text = item.pengajar
             tvDeskripsi.text = item.deskripsi
 
-            // Klik untuk buka DetailLaporanActivity
             card.setOnClickListener {
                 val intent = Intent(requireContext(), DetailLaporanActivity::class.java).apply {
                     putExtra("judul", item.judul)
@@ -149,8 +137,15 @@ class LaporanFragmentOrtu : Fragment() {
                 startActivity(intent)
             }
 
-            layoutAktivitasContainer?.addView(card)
+            layoutAktivitas.addView(card)
         }
     }
 
+    private fun getDummyLaporan(): List<LaporanItem> {
+        return listOf(
+            LaporanItem("08:00", "Observasi Siswa", "Bu Lina", "Observasi aktivitas belajar anak-anak.", R.drawable.car),
+            LaporanItem("10:00", "Pembuatan Laporan", "Pak Eko", "Menyusun laporan kegiatan harian.", R.drawable.car),
+            LaporanItem("12:00", "Evaluasi Kelas", "Bu Indah", "Diskusi hasil pembelajaran dengan rekan guru.", R.drawable.car)
+        )
+    }
 }

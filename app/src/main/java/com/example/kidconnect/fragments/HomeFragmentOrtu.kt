@@ -1,5 +1,6 @@
 package com.example.kidconnect.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.kidconnect.FeedbackActivity
+import com.example.kidconnect.OrtuActivity
 import com.example.kidconnect.R
 import com.example.kidconnect.model.HomeItem
 
@@ -56,13 +59,12 @@ class HomeFragmentOrtu : Fragment() {
         }
 
         btnPembayaranGedung.setOnClickListener {
-            Toast.makeText(requireContext(), "Pembayaran Gedung dibuka", Toast.LENGTH_SHORT).show()
-            // TODO: Navigasi ke fragment pembayaran gedung
+            (requireActivity() as OrtuActivity).switchToPembayaran()
         }
 
         btnKritikSaran.setOnClickListener {
-            Toast.makeText(requireContext(), "Pembayaran SPP dibuka", Toast.LENGTH_SHORT).show()
-            // TODO: Navigasi ke fragment pembayaran spp
+            val intent = Intent(requireContext(), FeedbackActivity::class.java)
+            startActivity(intent)
         }
 
         btnRiwayat.setOnClickListener {

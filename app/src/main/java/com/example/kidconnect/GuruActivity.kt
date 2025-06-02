@@ -6,24 +6,24 @@ import androidx.fragment.app.Fragment
 import com.example.kidconnect.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class OrtuActivity : AppCompatActivity() {
+class GuruActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.navbar_ot)
+        setContentView(R.layout.navbar_gr)
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
 
-        loadFragment(HomeFragmentOrtu())
+        loadFragment(HomeFragmentGuru())
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             val fragment: Fragment = when (item.itemId) {
-                R.id.home_ot -> HomeFragmentOrtu()
-                R.id.pembayaran_ot -> PembayaranFragmentOrtu()
-                R.id.laporan_ot -> LaporanFragmentOrtu()
-                R.id.profile_ot -> ProfileFragmentOrtu()
+                R.id.home_gr -> HomeFragmentGuru()
+                R.id.siswa_gr -> SiswaFragmentGuru()
+                R.id.laporan_gr -> LaporanFragmentGuru()
+                R.id.profile_gr -> ProfileFragmentGuru()
                 else -> HomeFragmentOrtu()
             }
             loadFragment(fragment)
@@ -42,14 +42,7 @@ class OrtuActivity : AppCompatActivity() {
             .replace(R.id.container, HomeFragmentOrtu())
             .commit()
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNav.selectedItemId = R.id.home_ot
+        bottomNav.selectedItemId = R.id.home_gr
     }
 
-    fun switchToPembayaran() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, HomeFragmentOrtu())
-            .commit()
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNav.selectedItemId = R.id.pembayaran_ot
-    }
 }

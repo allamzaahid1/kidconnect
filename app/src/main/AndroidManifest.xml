@@ -30,14 +30,30 @@
             android:name=".OrtuActivity"
             android:exported="false" />
         <activity
+            android:name=".GuruActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailPembayaranActivity"
             android:exported="false" />
         <activity
             android:name=".RekeningActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailRekeningActivity"
-            android:exported="false"/>
+            android:name=".DetailLaporanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InputLaporanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailSiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PengumumanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FeedbackActivity"
+            android:exported="false" />
+
 
     </application>
 
