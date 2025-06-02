@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var backButton: ImageButton
     private lateinit var etUsername: EditText
@@ -25,6 +29,8 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_register)
+
+        auth = FirebaseAuth.getInstance()
 
         backButton = findViewById(R.id.back)
         backButton.setOnClickListener {
@@ -85,7 +91,9 @@ class RegisterActivity : AppCompatActivity() {
         val nip = etNIP.text.toString().trim()
 
         if (username.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()
-            || confPassword.isEmpty() || namaAnak.isEmpty() || role.isEmpty()
+            || confPassword.isEmpty() || role.isEmpty() ||
+            (role == "ortu" && namaAnak.isEmpty()) ||
+            (role == "guru" && nip.isEmpty())
         ) {
             Toast.makeText(this, "Semua field harus diisi!", Toast.LENGTH_SHORT).show()
             return
@@ -96,10 +104,31 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        // Proses simpan ke database atau kirim ke server
-        Toast.makeText(this, "Pendaftaran berhasil sebagai $role", Toast.LENGTH_LONG).show()
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val uid = auth.currentUser?.uid
+                    val dbRef = FirebaseDatabase.getInstance().getReference("Users").child(uid!!)
 
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
+                    val userData = mutableMapOf<String, String>(
+                        "username" to username,
+                        "phone" to phone,
+                        "email" to email,
+                        "role" to role
+                    )
+
+                    if (role == "ortu") userData["namaAnak"] = namaAnak
+                    if (role == "guru") userData["nip"] = nip
+
+                    dbRef.setValue(userData).addOnCompleteListener {
+                        Toast.makeText(this, "Pendaftaran berhasil sebagai $role", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+                    }
+                } else {
+                    Toast.makeText(this, "Gagal mendaftar: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                }
+            }
     }
+
 }

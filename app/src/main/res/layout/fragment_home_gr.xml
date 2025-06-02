@@ -40,13 +40,13 @@
         app:layout_constraintStart_toStartOf="@+id/topbarhomegr"
         app:layout_constraintTop_toTopOf="@+id/topbarhomegr" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/btnNotif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
-        android:src="@drawable/notif_white"
+        android:background="@drawable/notif_white"
         app:layout_constraintEnd_toEndOf="@+id/topbarhomegr"
         app:layout_constraintTop_toTopOf="@+id/topbarhomegr"
         app:layout_constraintBottom_toBottomOf="@+id/topbarhomegr" />

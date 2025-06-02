@@ -15,8 +15,14 @@ import com.example.kidconnect.FeedbackActivity
 import com.example.kidconnect.OrtuActivity
 import com.example.kidconnect.R
 import com.example.kidconnect.model.HomeItem
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class HomeFragmentOrtu : Fragment() {
+
+    private lateinit var database: DatabaseReference
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var tvName: TextView
     private lateinit var tvAnnouncement: TextView
@@ -30,22 +36,74 @@ class HomeFragmentOrtu : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home_ot, container, false)
 
-        // Inisialisasi view dari layout
         tvName = view.findViewById(R.id.tvName)
         tvAnnouncement = view.findViewById(R.id.tvAnnouncement)
         tvTodayActivity = view.findViewById(R.id.tvTodayActivity)
         tvTimeActivity = view.findViewById(R.id.tvTimeActivity)
         ivBanner = view.findViewById(R.id.ivBanner)
 
-        // Dummy data
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance().reference
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val uid = currentUser.uid
+
+            database.child("Users").child(uid).get().addOnSuccessListener { snapshot ->
+                val namaAnak = snapshot.child("namaAnak").value?.toString() ?: "Anak"
+                tvName.text = namaAnak
+
+                // Cari kelas berdasarkan nama anak
+                database.child("Kelas").get().addOnSuccessListener { kelasSnapshot ->
+                    var kelasAnak: String? = null
+                    for (kelas in kelasSnapshot.children) {
+                        val muridSnapshot = kelas.child("murid")
+                        for (murid in muridSnapshot.children) {
+                            val namaMurid = murid.child("nama").value?.toString()
+                            if (namaMurid == namaAnak) {
+                                kelasAnak = kelas.key
+                                break
+                            }
+                        }
+                        if (kelasAnak != null) break
+                    }
+
+                    if (kelasAnak != null) {
+                        // Ambil pengumuman dari kelas anak
+                        database.child("PengumumanPerKelas").child(kelasAnak!!).get()
+                            .addOnSuccessListener { pengumumanSnapshot ->
+                                val isiPengumuman = pengumumanSnapshot.child("isi").value?.toString()
+                                val waktu = pengumumanSnapshot.child("waktu").value?.toString()?.toLongOrNull()
+                                val waktuFormatted = waktu?.let { formatWaktu(it) } ?: "-"
+
+                                tvAnnouncement.text = isiPengumuman ?: "Belum ada pengumuman"
+                                tvTodayActivity.text = "-"
+                                tvTimeActivity.text = waktuFormatted
+                            }
+                            .addOnFailureListener {
+                                tvAnnouncement.text = "Gagal memuat pengumuman"
+                            }
+                    } else {
+                        tvAnnouncement.text = "Kelas anak tidak ditemukan"
+                    }
+
+                }.addOnFailureListener {
+                    Toast.makeText(requireContext(), "Gagal memuat kelas", Toast.LENGTH_SHORT).show()
+                }
+
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), "Gagal memuat data user", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Dummy image (jika tidak pakai image dari Firebase)
         val homeItem = HomeItem(
-            name = "Nova",
-            announcement = "Hari ini libur dikarenakan cuaca yang sangat buruk",
-            todayActivity = "Mewarnai bersama",
-            timeActivity = "08.00 - 09.00",
+            name = "",
+            announcement = "",
+            todayActivity = "",
+            timeActivity = "",
             imageResId = R.drawable.car
         )
-
         showHomeData(homeItem)
 
         val btnNotif = view.findViewById<ImageView>(R.id.notifhome)
@@ -55,7 +113,6 @@ class HomeFragmentOrtu : Fragment() {
 
         btnNotif.setOnClickListener {
             Toast.makeText(requireContext(), "Notifikasi dibuka", Toast.LENGTH_SHORT).show()
-            // TODO: Navigasi ke fragment notifikasi
         }
 
         btnPembayaranGedung.setOnClickListener {
@@ -69,7 +126,6 @@ class HomeFragmentOrtu : Fragment() {
 
         btnRiwayat.setOnClickListener {
             Toast.makeText(requireContext(), "Riwayat Pembayaran dibuka", Toast.LENGTH_SHORT).show()
-            // TODO: Navigasi ke fragment riwayat pembayaran
         }
 
         return view
@@ -85,4 +141,10 @@ class HomeFragmentOrtu : Fragment() {
             .load(data.imageResId)
             .into(ivBanner)
     }
+
+    private fun formatWaktu(timestamp: Long): String {
+        val sdf = java.text.SimpleDateFormat("dd MMM yyyy, HH:mm", java.util.Locale("id", "ID"))
+        return sdf.format(java.util.Date(timestamp))
+    }
+
 }

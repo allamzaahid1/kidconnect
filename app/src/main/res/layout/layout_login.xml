@@ -78,7 +78,7 @@
         android:background="@drawable/bg_input"
         android:drawableStart="@drawable/name"
         android:drawablePadding="15dp"
-        android:hint="username"
+        android:hint="email"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@id/loginbg"

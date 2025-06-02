@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "135185370040",
+    "firebase_url": "https://kidconnect-2a239-default-rtdb.firebaseio.com",
+    "project_id": "kidconnect-2a239",
+    "storage_bucket": "kidconnect-2a239.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135185370040:android:6ee4be4186418510289d4d",
+        "android_client_info": {
+          "package_name": "com.example.kidconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWplMCFHY3u1dfwF3LItAxl3NoXhbNBZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

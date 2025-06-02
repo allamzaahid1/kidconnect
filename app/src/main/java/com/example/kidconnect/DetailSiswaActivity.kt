@@ -8,11 +8,15 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kidconnect.model.Murid
+import com.google.firebase.database.*
 
 class DetailSiswaActivity : AppCompatActivity() {
 
     private lateinit var btnBack: ImageButton
     private lateinit var btnNotif: ImageButton
+
+    private lateinit var database: DatabaseReference
     private lateinit var linearDaftarSiswa: LinearLayout
     private lateinit var kelastxt: TextView
 
@@ -22,8 +26,6 @@ class DetailSiswaActivity : AppCompatActivity() {
 
         btnBack = findViewById(R.id.btnBack)
         btnNotif = findViewById(R.id.notifsiswa)
-        linearDaftarSiswa = findViewById(R.id.linearDaftarSiswa)
-        kelastxt = findViewById(R.id.kelastxt)
 
         btnBack.setOnClickListener {
             finish()
@@ -34,40 +36,80 @@ class DetailSiswaActivity : AppCompatActivity() {
             // TODO: Navigasi ke fragment notifikasi
         }
 
-        // Ambil kelas dari Intent
-        val kelas = intent.getStringExtra("kelas") ?: "A"
+        database = FirebaseDatabase.getInstance().reference
+        linearDaftarSiswa = findViewById(R.id.linearDaftarSiswa)
+        kelastxt = findViewById(R.id.kelastxt)
 
-        // Set teks kelas sesuai data Intent
+        val kelas = intent.getStringExtra("kelas") ?: "A"
         kelastxt.text = "KELAS $kelas"
 
-        // Pilih daftar siswa berdasarkan kelas
-        val daftarSiswa = when (kelas) {
-            "A" -> listOf("Arhan Purnama", "Nayla Purnama", "Andi Saputra")
-            "B" -> listOf("Budi Santoso", "Sari Wulandari", "Dewi Lestari")
-            else -> listOf()
-        }
+        getDaftarSiswa(kelas)
+        getNamaWali(kelas)
 
-        // Kosongkan dulu daftar siswa sebelumnya
-        linearDaftarSiswa.removeAllViews()
+    }
 
-        val inflater = LayoutInflater.from(this)
+    private fun getDaftarSiswa(kelas: String) {
+        val kelasRef = database.child("Kelas").child(kelas).child("murid")
 
-        daftarSiswa.forEach { nama ->
-            val viewItem = inflater.inflate(R.layout.item_siswa, linearDaftarSiswa, false)
+        kelasRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                linearDaftarSiswa.removeAllViews()
+                val inflater = LayoutInflater.from(this@DetailSiswaActivity)
 
-            val namaSiswa = viewItem.findViewById<TextView>(R.id.namaSiswa)
-            val iconSiswa = viewItem.findViewById<ImageView>(R.id.iconSiswa)
+                for (muridSnapshot in snapshot.children) {
+                    val muridData = muridSnapshot.getValue(Murid::class.java)
+                    if (muridData != null) {
+                        val viewItem = inflater.inflate(R.layout.item_siswa, linearDaftarSiswa, false)
 
-            namaSiswa.text = nama
+                        val namaSiswa = viewItem.findViewById<TextView>(R.id.namaSiswa)
+                        val iconSiswa = viewItem.findViewById<ImageView>(R.id.iconSiswa)
 
-            // Contoh: ganti icon jika nama mengandung "Nayla" atau "Sari" (bisa disesuaikan)
-            if (nama.contains("Nayla", ignoreCase = true) || nama.contains("Sari", ignoreCase = true)) {
-                iconSiswa.setImageResource(R.drawable.siswa_ce)
-            } else {
-                iconSiswa.setImageResource(R.drawable.siswa_co)
+                        namaSiswa.text = muridData.nama
+
+                        // Set icon berdasarkan gender
+                        if (muridData.gender.equals("perempuan", ignoreCase = true)) {
+                            iconSiswa.setImageResource(R.drawable.siswa_ce)
+                        } else {
+                            iconSiswa.setImageResource(R.drawable.siswa_co)
+                        }
+
+                        linearDaftarSiswa.addView(viewItem)
+                    }
+                }
             }
 
-            linearDaftarSiswa.addView(viewItem)
-        }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@DetailSiswaActivity, "Gagal mengambil data", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
+    private fun getNamaWali(kelas: String) {
+        val kelasRef = database.child("Kelas").child(kelas)
+
+        kelasRef.child("guruId").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val guruId = snapshot.getValue(String::class.java)
+                if (!guruId.isNullOrEmpty()) {
+                    database.child("Users").child(guruId).child("username")
+                        .addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(userSnapshot: DataSnapshot) {
+                                val namaWali = userSnapshot.getValue(String::class.java)
+                                val txtNamaWali = findViewById<TextView>(R.id.namawalitxt)
+                                txtNamaWali.text = namaWali ?: "Tidak diketahui"
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                Toast.makeText(this@DetailSiswaActivity, "Gagal mengambil nama wali", Toast.LENGTH_SHORT).show()
+                            }
+                        })
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@DetailSiswaActivity, "Gagal mengambil guruId", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
 }

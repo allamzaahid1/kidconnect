@@ -20,6 +20,8 @@ import com.example.kidconnect.model.LaporanItem
 import com.example.kidconnect.model.CalendarItem
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class LaporanFragmentOrtu : Fragment() {
 
@@ -77,7 +79,6 @@ class LaporanFragmentOrtu : Fragment() {
             val dayName = SimpleDateFormat("EEE", Locale("id", "ID")).format(calendar.time)
             val dateNum = calendar.get(Calendar.DAY_OF_MONTH)
             val dateObj = calendar.time
-
             val isSelected = dateNum == currentDay
 
             calendarList.add(CalendarItem(dayName, dateNum, dateObj, isSelected))
@@ -88,26 +89,18 @@ class LaporanFragmentOrtu : Fragment() {
 
         calendarAdapter = CalendarAdapter(calendarList) { position ->
             calendarAdapter.updateSelection(position)
-            updateMonthText(calendarAdapter.getDateAt(position))
-            val dummyData = listOf(
-                LaporanItem("08:00", "Senam Pagi", "Bu Rina", "Senam pagi bersama anak-anak TK.", R.drawable.car),
-                LaporanItem("09:00", "Mewarnai", "Pak Dodi", "Belajar mewarnai buah-buahan.", R.drawable.car),
-                LaporanItem("10:00", "Makan Siang", "Bu Indah", "Makan bersama di kelas.", R.drawable.car)
-            )
-            loadAktivitas(dummyData, position)
+            val selectedDate = calendarAdapter.getDateAt(position)
+            updateMonthText(selectedDate)
+
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale("id", "ID"))
+            val tanggalKey = dateFormat.format(selectedDate)
+
+            getLaporanFromFirebase(tanggalKey)
         }
 
         recyclerViewCalendar.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerViewCalendar.adapter = calendarAdapter
-
-        val selectedPosition = calendarList.indexOfFirst { it.isSelected }
-        val dummyData = listOf(
-            LaporanItem("08:00", "Senam Pagi", "Bu Rina", "Senam pagi bersama anak-anak TK.", R.drawable.car),
-            LaporanItem("09:00", "Mewarnai", "Pak Dodi", "Belajar mewarnai buah-buahan.", R.drawable.car),
-            LaporanItem("10:00", "Makan Siang", "Bu Indah", "Makan bersama di kelas.", R.drawable.car)
-        )
-        loadAktivitas(dummyData, selectedPosition)
 
     }
 
@@ -118,15 +111,13 @@ class LaporanFragmentOrtu : Fragment() {
         textBulan.setTextColor(Color.WHITE)
     }
 
-    private fun loadAktivitas(aktivitasList: List<LaporanItem>, hariIndex: Int) {
+    private fun loadAktivitas(aktivitasList: List<LaporanItem>) {
         val layoutAktivitasContainer = view?.findViewById<LinearLayout>(R.id.layoutAktivitasContainer)
         layoutAktivitasContainer?.removeAllViews()
 
         val inflater = LayoutInflater.from(requireContext())
 
-        val filteredAktivitas = aktivitasList // atau filter jika ada field hari
-
-        for (item in filteredAktivitas) {
+        for (item in aktivitasList) {
             val card = inflater.inflate(R.layout.item_laporan, layoutAktivitasContainer, false)
 
             val tvJudul = card.findViewById<TextView>(R.id.textViewJudul)
@@ -137,7 +128,6 @@ class LaporanFragmentOrtu : Fragment() {
             tvPengajar.text = item.pengajar
             tvDeskripsi.text = item.deskripsi
 
-            // Klik untuk buka DetailLaporanActivity
             card.setOnClickListener {
                 val intent = Intent(requireContext(), DetailLaporanActivity::class.java).apply {
                     putExtra("judul", item.judul)
@@ -151,6 +141,67 @@ class LaporanFragmentOrtu : Fragment() {
 
             layoutAktivitasContainer?.addView(card)
         }
+    }
+
+    private fun getLaporanFromFirebase(tanggalKey: String) {
+        val uidOrtu = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val database = FirebaseDatabase.getInstance().reference
+
+        // 1. Ambil namaAnak dari Users/{uidOrtu}/namaAnak
+        database.child("Users").child(uidOrtu).child("namaAnak").get()
+            .addOnSuccessListener { namaAnakSnapshot ->
+                val namaAnak = namaAnakSnapshot.value?.toString()
+                if (namaAnak.isNullOrEmpty()) {
+                    loadAktivitas(emptyList())
+                    return@addOnSuccessListener
+                }
+
+                // 2. Cari muridId di Kelas/A/murid yang nama-nya sama dengan namaAnak
+                database.child("Kelas").child("A").child("murid").get()
+                    .addOnSuccessListener { muridSnapshot ->
+                        var muridId: String? = null
+
+                        for (murid in muridSnapshot.children) {
+                            val namaMurid = murid.child("nama").value?.toString()
+                            if (namaMurid == namaAnak) {
+                                muridId = murid.key
+                                break
+                            }
+                        }
+
+                        if (muridId == null) {
+                            loadAktivitas(emptyList())
+                            return@addOnSuccessListener
+                        }
+
+                        // 3. Ambil laporan dari Laporan/{muridId}/{tanggalKey}
+                        database.child("Laporan").child(muridId).child(tanggalKey)
+                            .get()
+                            .addOnSuccessListener { laporanSnapshot ->
+                                val laporanList = mutableListOf<LaporanItem>()
+                                if (!laporanSnapshot.exists()) {
+                                    loadAktivitas(emptyList())
+                                    return@addOnSuccessListener
+                                }
+
+                                for (laporan in laporanSnapshot.children) {
+                                    val waktu = laporan.child("waktu").value?.toString() ?: "-"
+                                    val judul = laporan.child("judul").value?.toString() ?: "-"
+                                    val pengajar = laporan.child("pengajar").value?.toString() ?: "-"
+                                    val deskripsi = laporan.child("deskripsi").value?.toString() ?: "-"
+                                    laporanList.add(LaporanItem(waktu, judul, pengajar, deskripsi, R.drawable.car))
+                                }
+
+                                loadAktivitas(laporanList)
+                            }
+                            .addOnFailureListener {
+                                loadAktivitas(emptyList())
+                            }
+                    }
+            }
+            .addOnFailureListener {
+                loadAktivitas(emptyList())
+            }
     }
 
 }

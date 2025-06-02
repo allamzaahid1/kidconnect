@@ -22,8 +22,14 @@ import com.example.kidconnect.model.CalendarItem
 import com.example.kidconnect.model.LaporanItem
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class LaporanFragmentGuru : Fragment() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     private lateinit var btnBack: View
     private lateinit var btnNotif: View
@@ -46,6 +52,9 @@ class LaporanFragmentGuru : Fragment() {
         layoutAktivitas = view.findViewById(R.id.layoutAktivitasContainer)
         textBulan = view.findViewById(R.id.textBulan)
         btnTambah = view.findViewById(R.id.addlaporan)
+
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance().reference
 
         setupCalendar()
 
@@ -92,17 +101,19 @@ class LaporanFragmentGuru : Fragment() {
 
         calendarAdapter = CalendarAdapter(calendarList) { position ->
             calendarAdapter.updateSelection(position)
-            updateMonthText(calendarAdapter.getDateAt(position))
-            val dummyData = getDummyLaporan()
-            loadAktivitas(dummyData)
+            val selectedDate = calendarAdapter.getDateAt(position)
+            updateMonthText(selectedDate)
+
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale("id", "ID"))
+            val tanggalKey = dateFormat.format(selectedDate)
+
+            getLaporanFromFirebase(tanggalKey)
         }
 
         recyclerViewCalendar.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerViewCalendar.adapter = calendarAdapter
 
-        val dummyData = getDummyLaporan()
-        loadAktivitas(dummyData)
     }
 
     private fun updateMonthText(date: Date) {
@@ -141,11 +152,39 @@ class LaporanFragmentGuru : Fragment() {
         }
     }
 
-    private fun getDummyLaporan(): List<LaporanItem> {
-        return listOf(
-            LaporanItem("08:00", "Observasi Siswa", "Bu Lina", "Observasi aktivitas belajar anak-anak.", R.drawable.car),
-            LaporanItem("10:00", "Pembuatan Laporan", "Pak Eko", "Menyusun laporan kegiatan harian.", R.drawable.car),
-            LaporanItem("12:00", "Evaluasi Kelas", "Bu Indah", "Diskusi hasil pembelajaran dengan rekan guru.", R.drawable.car)
-        )
+    private fun getLaporanFromFirebase(tanggal: String) {
+        val uidGuru = auth.currentUser?.uid ?: return
+        val laporanList = mutableListOf<LaporanItem>()
+        val dbRef = database
+
+        // Bersihkan UI dulu
+        layoutAktivitas.removeAllViews()
+
+        dbRef.child("LaporanGuru").child(uidGuru).child(tanggal)
+            .get()
+            .addOnSuccessListener { laporanSnapshot ->
+                if (!laporanSnapshot.exists()) {
+                    Toast.makeText(requireContext(), "Tidak ada laporan untuk tanggal ini", Toast.LENGTH_SHORT).show()
+                    loadAktivitas(emptyList())
+                    return@addOnSuccessListener
+                }
+
+                for (laporanSnap in laporanSnapshot.children) {
+                    val waktu = laporanSnap.child("waktu").value?.toString() ?: "-"
+                    val judul = laporanSnap.child("judul").value?.toString() ?: "-"
+                    val pengajar = laporanSnap.child("pengajar").value?.toString() ?: "-"
+                    val deskripsi = laporanSnap.child("deskripsi").value?.toString() ?: "-"
+                    val laporan = LaporanItem(waktu, judul, pengajar, deskripsi, R.drawable.car)
+                    laporanList.add(laporan)
+                }
+
+                // Urutkan laporan berdasarkan waktu (opsional)
+                laporanList.sortBy { it.waktu }
+                loadAktivitas(laporanList)
+            }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), "Gagal mengambil laporan: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
     }
+
 }

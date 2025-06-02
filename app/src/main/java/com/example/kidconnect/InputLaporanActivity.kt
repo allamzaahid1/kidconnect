@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -69,57 +71,77 @@ class InputLaporanActivity : AppCompatActivity() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val dpd = DatePickerDialog(this, { _, y, m, d ->
-            // Update tanggal ke EditText dalam format "12 Januari 2025"
+        DatePickerDialog(this, { _, y, m, d ->
             calendar.set(y, m, d)
             val format = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
             etTanggal.setText(format.format(calendar.time))
-        }, year, month, day)
-
-        dpd.show()
+        }, year, month, day).show()
     }
 
     private fun simpanLaporan() {
         val namaAktivitas = etNamaAktivitas.text.toString().trim()
         val tanggal = etTanggal.text.toString().trim()
         val pengajar = etPengajar.text.toString().trim()
+
         val deskripsi = etDesc.text.toString().trim()
 
-        // Validasi sederhana
-        if (namaAktivitas.isEmpty()) {
-            etNamaAktivitas.error = "Nama aktivitas harus diisi"
-            etNamaAktivitas.requestFocus()
+        if (namaAktivitas.isEmpty() || tanggal.isEmpty() || pengajar.isEmpty() || deskripsi.isEmpty()) {
+            Toast.makeText(this, "Harap lengkapi semua data", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (tanggal.isEmpty()) {
-            etTanggal.error = "Tanggal harus diisi"
-            etTanggal.requestFocus()
+        val uidGuru = FirebaseAuth.getInstance().currentUser?.uid ?: run {
+            Toast.makeText(this, "User belum login", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (pengajar.isEmpty()) {
-            etPengajar.error = "Nama pengajar harus diisi"
-            etPengajar.requestFocus()
-            return
+        val sdfInput = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
+        val sdfOutput = SimpleDateFormat("yyyy-MM-dd", Locale("id", "ID"))
+        val tanggalFormat = try {
+            sdfOutput.format(sdfInput.parse(tanggal)!!)
+        } catch (e: Exception) {
+            tanggal
         }
 
-        if (deskripsi.isEmpty()) {
-            etDesc.error = "Deskripsi harus diisi"
-            etDesc.requestFocus()
-            return
+        val laporanData = mapOf(
+            "waktu" to "08:00",
+            "judul" to namaAktivitas,
+            "pengajar" to pengajar,
+            "deskripsi" to deskripsi
+        )
+
+        val dbRef = FirebaseDatabase.getInstance().reference
+
+        // Simpan untuk murid seperti sebelumnya
+        dbRef.child("Kelas").get().addOnSuccessListener { kelasSnapshot ->
+            for (kelas in kelasSnapshot.children) {
+                val guruId = kelas.child("guruId").value?.toString()
+                if (guruId == uidGuru) {
+                    val muridRef = kelas.child("murid")
+                    for (murid in muridRef.children) {
+                        val muridId = murid.key
+                        if (muridId != null) {
+                            dbRef.child("Laporan")
+                                .child(muridId)
+                                .child(tanggalFormat)
+                                .push()
+                                .setValue(laporanData)
+                        }
+                    }
+                }
+            }
+            // Tambah simpan laporan di node LaporanGuru untuk guru yang login
+            dbRef.child("LaporanGuru")
+                .child(uidGuru)
+                .child(tanggalFormat)
+                .push()
+                .setValue(laporanData)
+
+            Toast.makeText(this, "Laporan disimpan untuk semua murid dan guru", Toast.LENGTH_SHORT).show()
+            finish()
+        }.addOnFailureListener {
+            Toast.makeText(this, "Gagal menyimpan laporan: ${it.message}", Toast.LENGTH_LONG).show()
         }
-
-        // Kalau sudah valid, misal tampilkan Toast sebagai contoh
-        Toast.makeText(
-            this,
-            "Laporan disimpan:\n$namaAktivitas\n$tanggal\n$pengajar\n$deskripsi",
-            Toast.LENGTH_LONG
-        ).show()
-
-        // TODO: Simpan data ke database atau kirim ke server di sini
-
-        // Setelah simpan selesai, bisa finish atau reset form
-        finish()
     }
+
 }
